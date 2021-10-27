@@ -5,17 +5,20 @@ import { useDisclosure } from "@chakra-ui/hooks"
 import { MenuIconButton } from "../../atoms/button/MenuIconButton"
 import { MenuDrawer } from "../../molecules/MenuDrawer"
 import { useHistory } from "react-router"
+import { useMessage } from "../../../hooks/useMessage"
 
 
 export const Header: VFC = memo(() => {
     const { isOpen, onOpen, onClose } = useDisclosure();
     const history = useHistory();
+    const { showMessage } = useMessage();
 
     const onClickHome = useCallback(() => history.push("/home"), [history])
     const onClickSetting = useCallback(() => history.push("/home/setting"), [history])
     const onClickUserManagement = useCallback(() => history.push("/home/usermanagement"), [history])
     const onClickLogout = useCallback(() => {
         history.push("/")
+        showMessage({ title: "ログアウトしました", status: "success" })
     }, [history])
     return (
         <>
