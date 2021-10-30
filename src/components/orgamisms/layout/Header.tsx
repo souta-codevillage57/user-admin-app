@@ -19,7 +19,7 @@ export const Header: VFC = memo(() => {
     const onClickLogout = useCallback(() => {
         history.push("/")
         showMessage({ title: "ログアウトしました", status: "success" })
-    }, [history])
+    }, [history, showMessage])
     return (
         <>
             <Flex
